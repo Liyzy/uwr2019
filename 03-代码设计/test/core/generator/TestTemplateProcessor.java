@@ -50,7 +50,8 @@ public class TestTemplateProcessor implements DataSourceType{
 		
 		// 增添静态行为测试
 		assertNotNull("静态方法测试不通过", DataSourceConfig.newInstance());
-
+		
+		
 		// 增添其他未使用方法的测试
 		DataSource dsByName = dsc.getDataSource("test");
 		assertNotNull("根据名字获取的DataSource为空", dsByName);
@@ -109,7 +110,8 @@ public class TestTemplateProcessor implements DataSourceType{
 				return null;
 			}
 		});
-
+		
+		// PowerMock 部分
 		PowerMock.mockStatic(DataSourceConfig.class);
 		EasyMock.expect(DataSourceConfig.newInstance()).andReturn(dsc);
 
