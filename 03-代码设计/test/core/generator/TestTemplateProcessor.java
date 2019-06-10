@@ -111,6 +111,15 @@ public class TestTemplateProcessor implements DataSourceType{
 			}
 		});
 		
+		PowerMock.mockStatic(DataSourceConfig.class);
+		EasyMock.expect(DataSourceConfig.newInstance()).andReturn(dsc);
+
+		// 原测试中未涉及的非静态方法测试
+		EasyMock.expect(dsc.getDataSource("test")).andReturn(ds);
+		ArrayList<DataSource> dataSourceList = new ArrayList<DataSource>();
+		dataSourceList.add(ds);
+		EasyMock.expect(dsc.getDataSources()).andReturn(dataSourceList);
+		EasyMock.expect(dsc.getFilename()).andReturn("newFile");
         	//
         	//------------------------------------------------
 		
